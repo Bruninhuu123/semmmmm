@@ -1,0 +1,215 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+@font-face {
+  font-family: "KyivTypeSans-Bold";
+  src: url(KyivTypeSans-Bold.otf);
+}
+
+.tit {
+  font-family: "KyivTypeSans-Bold";
+  font-size: 68px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 80px;
+  letter-spacing: 2px;
+}
+
+.tit {
+  position: relative;
+  display: inline-block;
+  padding: 18px 30px;
+  margin: 20px 0;
+  color: #03e9f4;
+  border: solid 1 px #03e9f4;
+  border-radius: 100px;
+  border-color: #03e9f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 2px;
+  margin-top: 90px;
+  margin-bottom: 60px;
+}
+
+.tit:hover {
+  background-color: #4e1fbb70;
+  color: #000000;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
+}
+
+
+
+* {
+  color: white;
+}
+
+.jumbotron {
+  background-color: #4e1fbb70;
+}
+
+body {
+  background-color: #101728;
+}
+
+.tit {
+  color: #9340ff;
+}
+
+.sexta-tela {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sexta-tela-conteudo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  padding: 70px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  color: #682196;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  z-index: 400;
+}
+
+#botao-fechar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: sans-serif;
+  transition: 300ms ease-in-out;
+  top: 10px;
+  right: 10px;
+  background-color: #1de9b6;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 5px 20px 0px #1de9b654;
+}
+
+#botao-fechar:hover {
+  background-color: #05ce9c;
+  color: #fff;
+  box-shadow: 0px 5px 20px 0px #1de9b654;
+  transition: 300ms ease-in-out;
+}
+
+
+#abrir #abre {
+  margin-top: 20px;
+  background-color: #1de9b6;
+  /* cor de fundo */
+  color: rgb(255, 255, 255);
+  /* cor do texto */
+  border: none;
+  border-radius: 30px;
+  /* deixar redondo */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#abre:hover {
+  background-color: #05ce9c;
+  color: #fff;
+  box-shadow: 0px 5px 20px 0px #1de9b654;
+  transition: 300ms ease-in-out;
+}
+
+
+
+
+.int .container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button {
+  margin-top: 20px;
+  background-color: #101728;
+  /* cor de fundo */
+  color: rgb(255, 255, 255);
+  /* cor do texto */
+  border: none;
+  border-radius: 30px;
+  /* deixar redondo */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #05ce9c;
+  color: #fff;
+  box-shadow: 0px 5px 20px 0px #1de9b654;
+  transition: 300ms ease-in-out;
+}
+
+.fon .container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.buttoon {
+  margin-top: 20px;
+  background-color: #101728;
+  /* cor de fundo */
+  color: rgb(255, 255, 255);
+  /* cor do texto */
+  border: none;
+  border-radius: 30px;
+  /* deixar redondo */
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buttoon:hover {
+  background-color: #05ce9c;
+  color: #fff;
+  box-shadow: 0px 5px 20px 0px #1de9b654;
+  transition: 300ms ease-in-out;
+}
+
+
+.fotos img {
+  width: 300px; /* ou qualquer outro valor que você desejar */
+  height: auto;
+  margin: 5px; /* para adicionar algum espaço entre as imagens */
+}
+.ft3{
+  width: 400px;
+}

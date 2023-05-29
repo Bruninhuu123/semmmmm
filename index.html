@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Projeto feira de ciencias</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="SL-012120-27260-08.jpg" type="image/x-icon">
+
+  <style>
+    .tela {
+      z-index: 99999999;
+    }
+
+    .navbar-brand {
+      position: relative;
+      display: inline-block;
+      padding: 17px 25px;
+      margin: 10px 0;
+      color: #03e9f4;
+      border: solid 1 px #03e9f4;
+      border-radius: 30px;
+      border-color: #03e9f4;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.5s;
+      letter-spacing: 2px;
+    }
+
+    .navbar-brand:hover {
+      background-color: #03e9f4;
+      color: #050801;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
+    }
+
+    .sub {
+      font-size: 29px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+
+    #quinta-tela {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #quinta-tela-conteudo {
+      height: auto;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #000000;
+      padding: 70px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 24px;
+      color: #682196;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      z-index: 400;
+      overflow: auto;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    #botao-fechar {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: sans-serif;
+      transition: 300ms ease-in-out;
+      top: 10px;
+      right: 10px;
+      background-color: #1de9b6;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+    }
+
+    #botao-fechar:hover {
+      background-color: #05ce9c;
+      color: #fff;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+      transition: 300ms ease-in-out;
+    }
+
+
+
+    #quarta-tela {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #quarta-tela-conteudo {
+      height: auto;
+      position: relative;
+      background-color: #000000;
+      padding: 70px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 24px;
+      color: #682196;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      overflow: auto;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    #botao-fechar {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: sans-serif;
+      transition: 300ms ease-in-out;
+      top: 10px;
+      right: 10px;
+      background-color: #1de9b6;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+    }
+
+    #botao-fechar:hover {
+      background-color: #05ce9c;
+      color: #fff;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+      transition: 300ms ease-in-out;
+    }
+
+
+
+    #terceira-tela {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+    }
+
+    #terceira-tela-conteudo {
+      height: auto;
+      position: relative;
+      background-color: #000000;
+      padding: 70px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 24px;
+      color: #682196;
+      box-shadow: 0px 40px 20px rgba(0, 0, 0, 0.1);
+      z-index: 10000;
+      overflow: auto;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    #botao-fechar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 90px;
+      height: 40px;
+      background-color: #1de9b6;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+
+    }
+
+    #botao-fechar:hover {
+      background-color: #05ce9c;
+      color: #fff;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+      transition: 300ms ease-in-out;
+    }
+
+
+
+    #segunda-tela {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #segunda-tela-conteudo {
+      height: auto;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #000000fd;
+      padding: 70px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 24px;
+      color: #682196;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      overflow: auto;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    #botao-fechar {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: sans-serif;
+      transition: 300ms ease-in-out;
+      top: 10px;
+      right: 10px;
+      background-color: #1de9b6;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+    }
+
+    #botao-fechar:hover {
+      background-color: #05ce9c;
+      color: #fff;
+      box-shadow: 0px 5px 20px 0px #1de9b654;
+      transition: 300ms ease-in-out;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+
+  <script src="script.js"></script>
+  <div id="tela">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" onclick="mostrarSextaTela()">No drugs</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container text-center">
+      <div class="jumbotron">
+        <h1 class="tit">a verdade por trás das drogas!</h1>
+        <p class="sub">Como forma de informar as pessoas, esta página comunica os malefícios de algumas drogas para a
+          saúde humana.</p>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="page-header">
+        <h1 class="efe">Efeitos das drogas</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+      </div>
+      <!--ÁLCOOOOOLL-->
+      <div class="col-sm-3" id="abir">
+        <h1>Álcool</h1>
+        <p>Bebidas alcoólicas são líquidos que contêm álcool etílico (etanol). Elas são produzidas através da
+          fermentação de ingredientes como frutas, grãos e mel. Exemplos comuns incluem cerveja, vinho, destilados (como
+          vodka, rum, uísque) e licores. O consumo responsável e moderado é importante, pois o consumo excessivo pode
+          levar a problemas de saúde e dependência.</p>
+        <p>Veja os malefícios</p>
+
+        <body>
+          <button onclick="mostrarTerceiraTela()" class="button" id="abre">Clique aqui</button>
+
+          <div id="terceira-tela">
+            <div id="terceira-tela-conteudo">
+              <h1>Malefícios para o organismo:</h1>
+              <h2></h2>
+              <p>O consumo excessivo e irresponsável de bebidas alcoólicas pode ter diversos malefícios para o
+                organismo. Aqui estão alguns dos principais efeitos negativos:</p>
+
+              <p> 1. Danos ao fígado: O consumo excessivo de álcool pode levar a doenças hepáticas, como esteatose
+                hepática (acúmulo de gordura no fígado), hepatite alcoólica e cirrose, que são condições graves e
+                potencialmente fatais.</p>
+
+              <p> 2. Problemas no sistema cardiovascular: O álcool em excesso pode aumentar a pressão arterial, causar
+                arritmias cardíacas, danificar o músculo cardíaco e aumentar o risco de doenças cardiovasculares, como
+                doença arterial coronariana e acidente vascular cerebral (AVC).</p>
+
+              <p> 3. Dependência e distúrbios relacionados ao álcool: O consumo crônico e excessivo de álcool pode levar
+                ao desenvolvimento de dependência alcoólica, também conhecida como alcoolismo. Isso pode causar
+                problemas psicológicos, sociais e de saúde significativos, além de afetar negativamente relacionamentos
+                e desempenho profissional.</p>
+
+              <p> 4. Problemas no sistema digestivo: O álcool pode irritar o revestimento do trato gastrointestinal,
+                causando inflamação, úlceras, gastrite e pancreatite. Além disso, pode interferir na absorção de
+                nutrientes essenciais, levando a deficiências nutricionais.</p>
+
+              <p>5. Danos ao sistema nervoso: O consumo excessivo e prolongado de álcool pode causar danos ao sistema
+                nervoso, resultando em problemas de memória, dificuldades de concentração, alterações de humor,
+                neuropatia periférica e até mesmo demência.</p>
+
+              <p> 6. Aumento do risco de câncer: O consumo excessivo de álcool está associado a um maior risco de
+                desenvolvimento de diversos tipos de câncer, incluindo câncer de boca, garganta, esôfago, fígado, mama e
+                cólon.</p>
+
+              <p> É importante ressaltar que o consumo moderado de álcool, quando feito de forma responsável e dentro
+                dos limites recomendados, pode não apresentar riscos significativos para a saúde. No entanto, é
+                fundamental estar ciente dos possíveis efeitos negativos do consumo excessivo e tomar decisões
+                informadas sobre o consumo de bebidas alcoólicas.</p>
+              <button id="botao-fechar" onclick="fecharTerceiraTela()">Fechar</button>
+            </div>
+          </div>
+
+          <script>
+            function mostrarTerceiraTela() {
+              document.getElementById("terceira-tela").style.display = "block";
+            }
+
+            function fecharTerceiraTela() {
+              document.getElementById("terceira-tela").style.display = "none";
+            }
+          </script>
+        </body>
+      </div>
+
+
+      <!--MACONHAAAAA-->
+      <div class="col-sm-3">
+        <h1>Maconha</h1>
+        <p>A maconha é uma planta que contém substâncias químicas chamadas canabinoides. Seu uso recreativo pode causar
+          efeitos psicoativos, enquanto seu uso medicinal pode ter benefícios no alívio da dor e controle de sintomas.
+          No entanto, o uso excessivo pode levar à dependência e apresenta riscos à saúde, como problemas respiratórios
+          e cognitivos.</p>
+        <p>Veja os malefícios</p>
+
+        <body>
+          <button onclick="mostrarQuartaTela()" class="button" id="abre">Clique aqui</button>
+          <div id="quarta-tela">
+            <div id="quarta-tela-conteudo">
+              <h1>Malefícios para o organismo:</h1>
+              <h2></h2>
+              <p>O consumo de maconha pode ter efeitos negativos no organismo. Alguns dos principais malefícios incluem:
+              </p>
+
+              <p> 1. Problemas respiratórios: Fumar maconha pode causar irritação nos pulmões, tosse, produção excessiva
+                de muco e bronquite crônica. Além disso, a inalação da fumaça da maconha contém toxinas e produtos
+                químicos prejudiciais, que podem causar danos aos pulmões e aumentar o risco de infecções respiratórias.
+              </p>
+
+              <p> 2. Comprometimento cognitivo: O uso frequente e prolongado da maconha, especialmente em idades mais
+                jovens, pode afetar negativamente o desenvolvimento cerebral e prejudicar a memória, a atenção, o
+                aprendizado e outras funções cognitivas.</p>
+
+              <p> 3. Dependência e problemas de saúde mental: Embora nem todos os usuários de maconha desenvolvam
+                dependência, o uso regular e intenso pode levar à dependência psicológica e, em alguns casos, à
+                dependência física. Além disso, o uso da maconha pode estar associado a um maior risco de
+                desenvolvimento ou agravamento de problemas de saúde mental, como ansiedade, depressão e psicose.</p>
+
+              <p> 4. Aumento do risco de acidentes: O uso da maconha pode prejudicar a coordenação motora, o tempo de
+                reação e o raciocínio, o que aumenta o risco de acidentes de trânsito e outras situações perigosas.</p>
+
+              <p> 5. Efeitos cardiovasculares: O uso de maconha pode levar a um aumento temporário da frequência
+                cardíaca e da pressão arterial, o que pode ser problemático para pessoas com doenças cardiovasculares
+                preexistentes.</p>
+
+              <p> É importante destacar que a gravidade e a prevalência desses efeitos negativos podem variar de acordo
+                com a dose, a frequência e o modo de uso da maconha, bem como fatores individuais. É recomendado buscar
+                orientação médica e estar ciente dos riscos antes de utilizar a maconha.</p>
+              <button id="botao-fechar" onclick="fecharQuartaTela()">Fechar</button>
+            </div>
+          </div>
+
+          <script>
+            function mostrarQuartaTela() {
+              document.getElementById("quarta-tela").style.display = "block";
+            }
+
+            function fecharQuartaTela() {
+              document.getElementById("quarta-tela").style.display = "none";
+            }
+          </script>
+        </body>
+      </div>
+
+      <!--CIGARROOOOOOOOO-->
+      <div class="col-sm-3">
+        <h1>Cigarro</h1>
+        <p>O cigarro é composto por substâncias tóxicas e seu consumo está fortemente relacionado a doenças graves,
+          incluindo câncer de pulmão, doenças cardiovasculares e respiratórias. Além disso, fumar prejudica a saúde
+          durante a gravidez e acelera o envelhecimento da pele. Parar de fumar traz inúmeros benefícios à saúde,
+          incluindo a redução do risco de doenças e uma melhora na qualidade de vida.</p>
+        <p>Veja os malefícios</p>
+
+        <body>
+          <button onclick="mostrarQuintaTela()" class="button" id="abre">Clique aqui</button>
+          <div id="quinta-tela">
+            <div id="quinta-tela-conteudo">
+              <h1>Malefícios para o organismo:</h1>
+              <h2></h2>
+              <p>O cigarro causa diversos malefícios ao organismo. Algumas das principais consequências são:</p>
+
+              <p> 1. Doenças respiratórias: Fumar está associado a condições como bronquite crônica, enfisema pulmonar e
+                doença pulmonar obstrutiva crônica (DPOC), resultando em dificuldade respiratória, tosse crônica e
+                produção excessiva de muco.</p>
+
+              <p> 2. Câncer: O tabagismo é a principal causa de câncer de pulmão, mas também aumenta o risco de câncer
+                em outras partes do corpo, como boca, garganta, esôfago, pâncreas, rim, bexiga e colo do útero.</p>
+
+              <p> 3. Doenças cardiovasculares: O cigarro danifica as artérias, aumentando o risco de doenças cardíacas,
+                como ataques cardíacos, acidentes vasculares cerebrais (AVCs), doença arterial coronariana e aneurismas.
+              </p>
+
+              <p> 4. Complicações na gravidez: Fumar durante a gravidez está associado a riscos para a saúde do feto,
+                como baixo peso ao nascer, parto prematuro, aborto espontâneo e problemas no desenvolvimento.</p>
+
+              <p> 5. Problemas na pele e envelhecimento precoce: O tabagismo contribui para o envelhecimento precoce da
+                pele, resultando em rugas, pele sem brilho, manchas e aumento do risco de desenvolver doenças da pele.
+              </p>
+
+              <p> 6. Danos ao sistema imunológico: O cigarro enfraquece o sistema imunológico, tornando o corpo mais
+                suscetível a infecções, como pneumonia e bronquite.</p>
+
+              <p> Esses são apenas alguns dos malefícios associados ao consumo de cigarro. Parar de fumar traz
+                benefícios significativos à saúde e reduz o risco de desenvolver essas condições. Buscar apoio médico e
+                programas de cessação tabágica pode ser fundamental para superar a dependência do cigarro e melhorar a
+                saúde geral.</p>
+              <button id="botao-fechar" onclick="fecharQuintaTela()">Fechar</button>
+            </div>
+          </div>
+
+          <script>
+            function mostrarQuintaTela() {
+              document.getElementById("quinta-tela").style.display = "block";
+            }
+
+            function fecharQuintaTela() {
+              document.getElementById("quinta-tela").style.display = "none";
+            }
+          </script>
+        </body>
+      </div>
+
+      <!--CIGARRO ELETRÔNICOOOOOOO-->
+      <div class="col-sm-3">
+        <h1>Cigarro Eletrônico</h1>
+        <p>O cigarro eletrônico é um dispositivo que produz vapor a partir de uma solução líquida. Apesar de ser
+          promovido como uma opção mais segura, há preocupações sobre seus efeitos na saúde. O uso de cigarros
+          eletrônicos está associado a problemas respiratórios, danos aos pulmões e riscos cardiovasculares. Além disso,
+          a exposição a substâncias químicas nos líquidos pode causar irritação ocular e afetar a saúde mental. A falta
+          de regulamentação adequada e a necessidade de mais pesquisas são questões importantes a serem consideradas ao
+          utilizar cigarros eletrônicos.</p>
+        <p>Veja aqui os malefícios</p>
+
+        <body>
+          <button onclick="mostrarSegundaTela()" class="button" id="abre">Clique aqui</button>
+
+          <div id="segunda-tela">
+            <div id="segunda-tela-conteudo">
+              <h1>Malefícios para o organismo:</h1>
+              <h2></h2>
+              <p>O uso de cigarros eletrônicos apresenta riscos e malefícios para o organismo. Alguns dos principais
+                são:</p>
+
+              <p> 1. Problemas respiratórios: O vapor dos cigarros eletrônicos pode irritar as vias respiratórias e
+                causar danos aos pulmões. Evidências indicam o surgimento de doenças pulmonares graves, como a lesão
+                pulmonar associada ao uso de produtos de vaping (EVALI).</p>
+
+              <p> 2. Riscos cardiovasculares: Alguns estudos sugerem que o uso de cigarros eletrônicos pode aumentar o
+                risco de doenças cardiovasculares, como a hipertensão arterial e o endurecimento das artérias.</p>
+
+              <p> 3. Exposição a substâncias tóxicas: Os líquidos utilizados nos cigarros eletrônicos contêm produtos
+                químicos prejudiciais, como nicotina, formaldeído e metais pesados, que podem ser inalados e absorvidos
+                pelo organismo, apresentando riscos para a saúde.</p>
+
+              <p> 4. Irritação ocular: A exposição ao vapor dos cigarros eletrônicos pode causar irritação nos olhos,
+                levando a vermelhidão, ardência e coceira.</p>
+
+              <p> 5. Riscos para a saúde mental: O uso de cigarros eletrônicos tem sido associado a um maior risco de
+                problemas de saúde mental, como ansiedade e depressão.</p>
+
+              <p> É importante destacar que ainda há muito a ser compreendido sobre os efeitos a longo prazo do uso de
+                cigarros eletrônicos, mas as evidências atuais apontam para riscos significativos para a saúde. É
+                aconselhável buscar informações atualizadas e seguir as orientações de profissionais de saúde
+                qualificados antes de usar cigarros eletrônicos.</p>
+              <button id="botao-fechar" onclick="fecharSegundaTela()">Fechar</button>
+            </div>
+          </div>
+
+          <script>
+            function mostrarSegundaTela() {
+              document.getElementById("segunda-tela").style.display = "block";
+            }
+
+            function fecharSegundaTela() {
+              document.getElementById("segunda-tela").style.display = "none";
+            }
+          </script>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-header">
+
+      <div class="col-sm-3">
+
+
+      </div>
+      <divc class="container">
+        <h2></h2>
+    </div>
+
+
+
+    <div class="container" id="int">
+      <h4>Site desenvolvido para o projeto da Feira do Aprendizado de 2023 da Escola Estadual de Ensino Médio Cristo Rei
+      </h4>
+      <button class="button" onclick="mostrarIntegrantes()">Integrantes do Grupo</button>
+    </div>
+
+    <div id="integrantes" style="display: none;">
+      <h4>Nome dos integrantes</h4>
+      <ul>
+        <li>Bruno de Moura Jahn (Desenvolvedor do site)</li>
+        <li>Fabiane Paulus (Colaboradora)</li>
+        <li>Gabriel Cardona Bittencourt</li>
+        <li>Gustavo dos Santos</li>
+        <li>Leandro de Moura Paranhos</li>
+        <li>Lucas Rauan Morsch</li>
+        <li>Matheus Ribeiro Genro</li>
+        <li>Ricardo Bernardi</li>
+        <!-- Adicione mais itens conforme necessário -->
+      </ul>
+      <div class="fotos" id="foto">
+        <img src="WhatsApp Image 2023-05-25 at 12.50.16.jpeg" alt="Descrição da imagem 1">
+        <img src="WhatsApp Image 2023-05-25 at 12.50.20.jpeg" alt="Descrição da imagem 2">
+        <img src="WhatsApp Image 2023-05-29 at 10.56.31.jpeg" alt="Descrição da imagem 3" id="ft3">
+      </div>
+      
+    </div>
+
+    <script>
+      function mostrarIntegrantes() {
+        var integrantesDiv = document.getElementById("integrantes");
+        integrantesDiv.style.display = "block";
+      }
+    </script>
+
+
+
+
+    <div class="container" id="fon">
+      <button class="buttoon" onclick="mostrarFontes()">Fontes</button>
+    </div>
+
+    <div id="fontes" style="display: none;">
+      <p>As pesquisas foram feitas no programa de inteligência artificial ChatGPT, a qual nos forneceu todos os dados e
+        informações contidas neste site.</p>
+        <a href="https://www.freepik.com/free-vector/no-marijuana-stop-cbd-symbol-design_17819768.htm#query=no%20drugs&position=6&from_view=search&track=robertav1_2_sidr">Image by starline</a> on Freepik</p>
+    </div>
+    <script>
+      function mostrarFontes() {
+        var integrantesDiv = document.getElementById("fontes");
+        integrantesDiv.style.display = "block";
+      }
+    </script>
+
+
+
+    <div class="container text-center">
+      <p>Direitos | 2022</p>
+    </div>
+
+</body>
+
+</html>
